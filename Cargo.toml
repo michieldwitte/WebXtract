@@ -1,0 +1,28 @@
+[package]
+name = "webxtract"
+version = "1.0.0"
+edition = "2024"
+description = "Client-side archive, installer, and package extractor compiled to WebAssembly"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+nsis = "0.6"
+msi = "0.11.1"
+cab = "0.6.0"
+goblin = { version = "0.10.7", default-features = false, features = ["elf32", "elf64", "pe32", "pe64", "std"] }
+quick-xml = "0.41.0"
+unarc-rs = { version = "0.8.1", default-features = false }
+innospect = "0.2.0"
+iso9660-rs = { version = "1.0.2", features = ["joliet", "rock-ridge"] }
+gpt_disk_io = "0.16"
+flate2 = { version = "1.1", default-features = false, features = ["rust_backend"] }
+lopdf = { version = "0.47", default-features = false, features = ["wasm_js"] }
+exav-unpack = { version = "0.0.2", default-features = false, features = ["all-formats-no-emu", "decrypt"] }
+squashfs_reader = { path = "vendor/squashfs_reader", default-features = false, features = ["only_rust"] }
+wasm-bindgen = "0.2"
+js-sys = "0.3"
+web-sys = { version = "0.3", features = ["console"] }
+

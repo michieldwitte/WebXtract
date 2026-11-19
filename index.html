@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f3ee" />
+    <meta name="description" content="Extract files from archives, installers, disk images, and packages entirely in your browser." />
+    <title>WebXtract — Private file extraction</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="WebXtract home"><span class="brand-mark">x</span> WebXtract</a>
+        <span class="privacy"><span class="privacy-dot"></span> Files stay on your device</span>
+      </header>
+
+      <section class="intro">
+        <p class="eyebrow">A simple tool for your files</p>
+        <h1>Open it up.</h1>
+        <p class="lede">Drop in an archive or installer and pull out the files inside.<br class="desktop-break" /> Everything happens in your browser.</p>
+      </section>
+
+      <section class="workspace" aria-label="Installer extraction">
+        <label class="dropzone" id="dropzone" for="file-input" tabindex="0">
+          <span class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14.5v4A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-4"/></svg></span>
+          <span class="drop-title">Drop an archive or installer here</span>
+          <span class="drop-caption">or <span class="browse">browse files</span> · ZIP, TAR, 7Z, RAR, ARJ, CAB, ISO, AppImage, DMG, ext4, WIM, PDF, Android boot, MSI/MSP/MSM/MSU, NSIS and more</span>
+          <input id="file-input" type="file" accept=".exe,.dll,.img,.boot,.AppImage,.appimage,.msi,.msp,.msm,.msu,.pdf,.zip,.jar,.apk,.aab,.epub,.nupkg,.whl,.tar,.tgz,.tbz,.tbz2,.txz,.tzst,.gz,.bz2,.xz,.zst,.7z,.rar,.arj,.cab,.iso,.dmg,.ext,.ext2,.ext3,.ext4,.wim,.vhd,.vhdx,.qcow2,.vmdk,.lz4,.lzip,.lzma,.Z,.lzh,.lha,.zoo,.arc,.egg,.alz,.chm,.eml,.tnef,.swf,.lnk,.pyc,.rtf,.sit,.hwp,.binhex,.uue,.ar,.cpio,.xar,application/pdf,application/zip,application/x-7z-compressed,application/x-tar,application/x-msi,application/x-cab" />
+        </label>
+
+        <div class="extraction-limit">
+          <label for="memory-limit">Extraction memory limit</label>
+          <select id="memory-limit" name="memory-limit">
+            <option value="67108864">64 MB</option>
+            <option value="134217728">128 MB</option>
+            <option value="268435456">256 MB</option>
+            <option value="536870912">512 MB</option>
+            <option value="1073741824" selected>1 GB</option>
+            <option value="2147483648">2 GB</option>
+            <option value="3221225472">3 GB</option>
+          </select>
+          <span>Limits total extracted data. The selected file and browser overhead also use memory.</span>
+        </div>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <section id="results" class="results" hidden>
+          <div class="results-head">
+            <div><p class="eyebrow">Contents</p><h2 id="result-title">Files found</h2></div>
+            <div class="results-actions">
+              <button class="text-button" id="clear-button" type="button">Choose another</button>
+              <button class="download-all-button" id="download-all" type="button">Download all as ZIP</button>
+            </div>
+          </div>
+          <div id="file-list" class="file-list"></div>
+          <p class="footnote">Download all creates a ZIP that keeps the installer’s folder paths. ZIP contents are stored without recompression.</p>
+        </section>
+      </section>
+
+      <footer><span>ZIP, TAR, 7Z, CAB, ISO and installer extraction</span><span>Built for private, local extraction</span></footer>
+    </main>
+    <script type="module" src="app.js?v=1.0.0"></script>
+  </body>
+</html>
